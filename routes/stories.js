@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const cloudinary = require("../middleware/cloudinary")
+const upload = require("../middleware/multer")
 const { ensureAuth } = require('../middleware/auth')
 
 const Story = require('../models/Story')
@@ -12,10 +14,25 @@ router.get('/add', ensureAuth, (req, res) => {
 
 // @desc    Process add form
 // @route   POST /stories
-router.post('/', ensureAuth, async (req, res) => {
+router.post('/', ensureAuth, upload.single("file"), async (req, res) => {
   try {
-    req.body.user = req.user.id
-    await Story.create(req.body)
+    if (!req.file) {
+      req.flash("errors", {
+        msg: "No file selected."
+      });
+      return res.redirect("/add")
+    }
+    const result = await cloudinary.uploader.upload(req.file.path)
+    await Story.create({
+      title: req.body.title,
+      image: result.secure_url,
+      cloudinaryId: result.public_id,
+      body: req.body.body,
+      status: req.body.status,
+      user: req.user._id,
+    })
+    // req.body.user = req.user.id
+    // await Story.create(req.body)
     res.redirect('/dashboard')
   } catch (err) {
     console.error(err)
@@ -123,6 +140,10 @@ router.delete('/:id', ensureAuth, async (req, res) => {
 
     if (!story) {
       return res.render('error/404')
+    }
+
+    if (post.cloudinaryId) {
+      await cloudinary.uploader.destroy(post.cloudinaryId);
     }
 
     if (story.user != req.user.id) {

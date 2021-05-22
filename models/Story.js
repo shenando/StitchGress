@@ -6,6 +6,14 @@ const StorySchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  image: {
+    type: String,
+    require: true
+  },
+  cloudinaryID: {
+    type: String,
+    require: true
+  },
   body: {
     type: String,
     required: true
