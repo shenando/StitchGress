@@ -28,6 +28,7 @@ router.post('/', ensureAuth, upload.single("file"), async (req, res) => {
       image: result.secure_url,
       cloudinaryId: result.public_id,
       body: req.body.body,
+      likes: 0,
       status: req.body.status,
       user: req.user._id,
     })
@@ -155,6 +156,24 @@ router.delete('/:id', ensureAuth, async (req, res) => {
   } catch (err) {
     console.error(err)
     return res.render('error/500')
+  }
+})
+
+// @desc    Like a story
+// @route   PUT /stories/likeStory/:id
+router.put('/likeStory/:id', ensureAuth, async (req, res) => {
+  try {
+    await Story.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $inc: { likes: 1 },
+      }
+    )
+    console.log("Likes +1")
+    res.redirect(`/stories/${req.params.id}`)
+  } catch (error) {
+    console.error(error)
+    res.render('error/500')
   }
 })
 

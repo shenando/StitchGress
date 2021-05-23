@@ -8,6 +8,11 @@
                 <span class="card-title">{{formatDate date 'MMMM Do YYYY, h:mm:ss a'}}</span>
                 <img src="{{story.image}}" alt="{{story.title}}" class="responsive-img">
                 {{{story.body}}}
+                <form action="/stories/likeStory/{{story._id}}" method="POST" class="right-align">
+                    <input type="hidden" name="_method" value="PUT" />
+                    <span>{{{story.likes}}} likes</span>
+                    <button class="button" type="submit"><i class="fas fa-star"></i></button>
+                </form>
             </div>
         </div>
     </div>
