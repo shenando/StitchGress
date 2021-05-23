@@ -10,7 +10,7 @@ const StorySchema = new mongoose.Schema({
     type: String,
     require: true
   },
-  cloudinaryID: {
+  cloudinaryId: {
     type: String,
     require: true
   },

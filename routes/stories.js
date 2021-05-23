@@ -142,8 +142,8 @@ router.delete('/:id', ensureAuth, async (req, res) => {
       return res.render('error/404')
     }
 
-    if (post.cloudinaryId) {
-      await cloudinary.uploader.destroy(post.cloudinaryId);
+    if (story.cloudinaryId) {
+      await cloudinary.uploader.destroy(story.cloudinaryId)
     }
 
     if (story.user != req.user.id) {
