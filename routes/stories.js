@@ -20,7 +20,7 @@ router.post('/', ensureAuth, upload.single("file"), async (req, res) => {
       req.flash("errors", {
         msg: "No file selected."
       });
-      return res.redirect("/add")
+      return res.redirect("/stories/add")
     }
     const result = await cloudinary.uploader.upload(req.file.path)
     await Story.create({

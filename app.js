@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
+const flash = require("express-flash")
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
@@ -81,6 +82,9 @@ app.use(
 // Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+// Use flash messages for errors, info, ect...
+app.use(flash());
 
 // Set global var
 app.use(function (req, res, next) {
