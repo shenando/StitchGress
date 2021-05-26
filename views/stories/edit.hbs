@@ -24,8 +24,10 @@
         <div class="row">
             <div class="input-field">
                 <select id="patternType" name="patternType">
+                    {{#select story.patternType}}
                     <option value="free" selected>Free</option>
                     <option value="purchased">Purchased</option>
+                    {{/select}}
                 </select>
                 <label for="patternType">Pattern Type</label>
             </div>
@@ -33,7 +35,7 @@
 
         <div class="row">
             <div class="input-field">
-                <input type="text" id="patternLink" name="patternLink">
+                <input type="text" id="patternLink" name="patternLink" value="{{story.patternLink}}">
                 <label for="patternLink">Pattern Link</label>
             </div>
         </div>
