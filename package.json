@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node app",
-    "dev": "cross-env NODE_ENV=development nodemon app"
+    "dev": "cross-env NODE_ENV=development nodemon app",
+    "server": "json-server --watch db.json --port 5000"
   },
   "author": "Shenandoah Pettit",
   "license": "MIT",
@@ -17,6 +18,7 @@
     "express-flash": "^0.0.2",
     "express-handlebars": "^5.3.2",
     "express-session": "^1.17.1",
+    "json-server": "^0.16.3",
     "method-override": "^3.0.0",
     "moment": "^2.29.1",
     "mongoose": "^5.12.7",

@@ -23,6 +23,23 @@
 
         <div class="row">
             <div class="input-field">
+                <select id="patternType" name="patternType">
+                    <option value="free" selected>Free</option>
+                    <option value="purchased">Purchased</option>
+                </select>
+                <label for="patternType">Pattern Type</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="patternLink" name="patternLink">
+                <label for="patternLink">Pattern Link</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
                 <h5>Tell Us About Your Project:</h5>
                 <textarea id="body" name="body">{{story.body}}</textarea>
             </div>

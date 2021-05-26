@@ -21,7 +21,14 @@ const StorySchema = new mongoose.Schema({
   likes: {
     type: Number,
     required: true,
-    default: 0,
+    default: 0
+  },
+  patternType: {
+    type: String
+  },
+  patternLink: {
+    type: String,
+    trim: true
   },
   status: {
     type: String,

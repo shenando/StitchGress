@@ -22,6 +22,12 @@
                 <span class="card-title">{{story.user.displayName}}</span>
                 <img src="{{story.user.image}}" class="circle responsive-img img-small">
             </div>
+            <div class="project-content">
+                <span class="patternType">Pattern Type: {{story.patternType}}</span>
+                <br>
+                <span class="patternLink"><a href="{{story.patternLink}}">Get the pattern!</a></span>
+                <br>
+            </div>
             <div class="card-action">
                 <a href="/stories/user/{{story.user._id}}">More From {{story.user.firstName}}</a>
             </div>

@@ -29,6 +29,8 @@ router.post('/', ensureAuth, upload.single("file"), async (req, res) => {
       cloudinaryId: result.public_id,
       body: req.body.body,
       likes: 0,
+      patternLink: req.body.patternLink,
+      patternType: req.body.patternType,
       status: req.body.status,
       user: req.user._id,
     })
