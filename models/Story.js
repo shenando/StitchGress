@@ -18,6 +18,9 @@ const StorySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  colors: {
+    type: Array,
+  },
   likes: {
     type: Number,
     required: true,
